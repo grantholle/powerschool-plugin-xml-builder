@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://plugin.powerschool.pearson.com" version="1.1.1" name="Simple Plugin" description="A simple plugin" deletable="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://plugin.powerschool.pearson.com plugin.xsd">
+  <publisher name="Joe Montana">
+    <contact email="joe@nfl.com"/>
+  </publisher>
+  <oauth></oauth>
+  <openid host="example.com" port="8443">
+    <links>
+      <link display-text="My OpenID link" path="/path" title="My OpenID title">
+        <ui_contexts>
+          <ui_context id="admin.header"/>
+          <ui_context id="student.header"/>
+        </ui_contexts>
+      </link>
+    </links>
+  </openid>
+  <links>
+    <link display-text="My link" path="http://example.com" title="My title">
+      <ui_contexts>
+        <ui_context id="guardian.header"/>
+      </ui_contexts>
+    </link>
+  </links>
+</plugin>

@@ -1,0 +1,31 @@
+{
+    "name": "grant/powerschool-plugin-xml-builder",
+    "description": "Build a plugin XML file for PowerSchool fluently.",
+    "type": "library",
+    "keywords": ["powerschool", "powerschool plugin", "plugin.xml"],
+    "require": {
+        "php": "^7.2",
+        "spatie/array-to-xml": "^2.12",
+        "seromenho/xml-validator": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Grant Holle",
+            "email": "hollegrant@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "GrantHolle\\PowerSchool\\Plugin\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}
