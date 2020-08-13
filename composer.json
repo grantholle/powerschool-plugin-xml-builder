@@ -2,6 +2,7 @@
     "name": "grant/powerschool-plugin-xml-builder",
     "description": "Build a plugin XML file for PowerSchool fluently.",
     "type": "library",
+    "version": "1.0.0",
     "keywords": ["powerschool", "powerschool plugin", "plugin.xml"],
     "require": {
         "php": "^7.2",
