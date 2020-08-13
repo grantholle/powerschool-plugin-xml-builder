@@ -285,7 +285,7 @@ class PluginXmlBuilder
         ];
 
         if ($this->oauth) {
-            $plugin['oauth'] = '';
+            $plugin['oauth'] = [];
         }
 
         if ($this->openId) {
@@ -329,7 +329,7 @@ class PluginXmlBuilder
         return $plugin;
     }
 
-    public function create(bool $pretty = true, bool $validate = false)
+    public function create(bool $pretty = true, bool $validate = true)
     {
         $arrayToXml = new ArrayToXml(
             $this->toArray(),

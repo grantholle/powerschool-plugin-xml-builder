@@ -3,7 +3,7 @@
   <publisher name="Joe Montana">
     <contact email="joe@nfl.com"/>
   </publisher>
-  <oauth></oauth>
+  <oauth/>
   <openid host="example.com" port="8443">
     <links>
       <link display-text="My OpenID link" path="/path" title="My OpenID title">
@@ -21,4 +21,32 @@
       </ui_contexts>
     </link>
   </links>
+  <access_request>
+    <field table="students" field="dcid" access="ViewOnly"/>
+    <field table="students" field="first_name" access="FullAccess"/>
+    <field table="students" field="last_name" access="FullAccess"/>
+  </access_request>
+  <saml name="mysaml" entity-id="http://example.com/saml" base-url="http://example.com/" metadata-url="http://example.com/metadata">
+    <links>
+      <link display-text="SAML" path="http://example.com/saml/login" title="SAML SP">
+        <ui_contexts>
+          <ui_context id="admin.header"/>
+          <ui_context id="admin.left_nav"/>
+        </ui_contexts>
+      </link>
+    </links>
+    <attributes>
+      <user type="admin">
+        <attribute name="firstName"/>
+        <attribute name="lastName" attribute-name="altLastName" attribute-value="myvalue"/>
+      </user>
+      <user type="student">
+        <attribute name="first_name" attribute-name="first"/>
+      </user>
+    </attributes>
+    <permissions>
+      <permission name="permission1" description="A sample permission" value="abc123"/>
+      <permission name="permission2" description="Another sample permission" value="def456"/>
+    </permissions>
+  </saml>
 </plugin>

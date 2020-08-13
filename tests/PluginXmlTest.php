@@ -17,7 +17,7 @@ class PluginXmlTest extends TestCase
             ->description('A simple plugin')
             ->name('Simple Plugin')
             ->publisher('Joe Montana', 'joe@nfl.com')
-            ->create();
+            ->create(true, false);
 
         $expected = file_get_contents('simple.plugin.xml');
 
@@ -37,8 +37,21 @@ class PluginXmlTest extends TestCase
                 UiContext::STUDENT_HEADER,
             ])
             ->addLink('My link', 'http://example.com', 'My title', UiContext::GUARDIAN_HEADER)
+            ->addAccessRequest('students', 'dcid')
+            ->addAccessRequest('students', 'first_name', true)
+            ->addAccessRequest('students', 'last_name', true)
+            ->saml('mysaml', 'http://example.com/saml', 'http://example.com/', 'http://example.com/metadata')
+            ->addSamlLink('SAML', 'http://example.com/saml/login', 'SAML SP', [
+                UiContext::ADMIN_HEADER,
+                UiContext::ADMIN_LEFT_NAV,
+            ])
+            ->addSamlAttribute('admin', 'firstName')
+            ->addSamlAttribute('admin', 'lastName', 'altLastName', 'myvalue')
+            ->addSamlAttribute('student', 'first_name', 'first')
+            ->addSamlPermission('permission1', 'A sample permission', 'abc123')
+            ->addSamlPermission('permission2', 'Another sample permission', 'def456')
             ->oauth()
-            ->create(true, true);
+            ->create();
 
         $expected = file_get_contents('complex.plugin.xml');
 

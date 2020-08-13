@@ -78,7 +78,7 @@ class Saml
             $this->attributes[$cleanedType] = [];
         }
 
-        $this->attributes[$cleanedType][] = new SamlAttribute($name, $attributeValue, $attributeValue);
+        $this->attributes[$cleanedType][] = new SamlAttribute($name, $attributeName, $attributeValue);
 
         return $this;
     }
