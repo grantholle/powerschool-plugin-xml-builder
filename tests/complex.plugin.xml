@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<plugin xmlns="http://plugin.powerschool.pearson.com" version="1.1.1" name="Simple Plugin" description="A simple plugin" deletable="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://plugin.powerschool.pearson.com plugin.xsd">
+<plugin xmlns="http://plugin.powerschool.pearson.com" version="1.1.1" name="Simple Plugin" description="A simple plugin" deletable="false" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://plugin.powerschool.pearson.com plugin.xsd">
   <publisher name="Joe Montana">
     <contact email="joe@nfl.com"/>
   </publisher>
@@ -49,4 +49,9 @@
       <permission name="permission2" description="Another sample permission" value="def456"/>
     </permissions>
   </saml>
+  <autoinstall required="true">
+    <autoenable required="true"/>
+    <autoregister required="true"/>
+    <autoredeploy/>
+  </autoinstall>
 </plugin>

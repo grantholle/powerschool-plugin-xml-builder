@@ -51,6 +51,10 @@ class PluginXmlTest extends TestCase
             ->addSamlPermission('permission1', 'A sample permission', 'abc123')
             ->addSamlPermission('permission2', 'Another sample permission', 'def456')
             ->oauth()
+            ->autoEnable()
+            ->autoRegister()
+            ->autoDeploy()
+            ->cantDelete()
             ->create();
 
         $expected = file_get_contents('complex.plugin.xml');

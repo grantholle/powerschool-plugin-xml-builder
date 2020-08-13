@@ -72,6 +72,21 @@ class PluginXmlBuilder
     protected $registrationCallback;
 
     /**
+     * @var bool
+     */
+    protected $autoEnable = false;
+
+    /**
+     * @var bool
+     */
+    protected $autoRegister = false;
+
+    /**
+     * @var bool
+     */
+    protected $autoDeploy = false;
+
+    /**
      * PluginBuilder constructor.
      *
      * @param string|null $version
@@ -264,6 +279,27 @@ class PluginXmlBuilder
         return $this;
     }
 
+    public function autoEnable(): PluginXmlBuilder
+    {
+        $this->autoEnable = true;
+
+        return $this;
+    }
+
+    public function autoRegister(): PluginXmlBuilder
+    {
+        $this->autoRegister = true;
+
+        return $this;
+    }
+
+    public function autoDeploy(): PluginXmlBuilder
+    {
+        $this->autoDeploy = true;
+
+        return $this;
+    }
+
     /**
      * Builds the plugin as an array to be ingested by ArrayToXml
      *
@@ -324,6 +360,34 @@ class PluginXmlBuilder
 
         if ($this->saml) {
             $plugin['saml'] = $this->saml->toArray();
+        }
+
+        if ($this->autoEnable || $this->autoRegister || $this->autoDeploy) {
+            $plugin['autoinstall'] = [
+                '_attributes' => [
+                    'required' => 'true',
+                ],
+            ];
+
+            if ($this->autoEnable) {
+                $plugin['autoinstall']['autoenable'] = [
+                    '_attributes' => [
+                        'required' => 'true',
+                    ],
+                ];
+            }
+
+            if ($this->autoRegister) {
+                $plugin['autoinstall']['autoregister'] = [
+                    '_attributes' => [
+                        'required' => 'true',
+                    ],
+                ];
+            }
+
+            if ($this->autoDeploy) {
+                $plugin['autoinstall']['autoredeploy'] = [];
+            }
         }
 
         return $plugin;
